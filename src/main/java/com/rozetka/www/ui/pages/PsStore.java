@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import static com.rozetka.www.ui.DriverManager.getDriver;
 
-public class PsStore extends GamingPage{
+public class PsStore {
 
     private static final String LINK_KIDSCONSOLE = "/html/body/app-root/div/div[1]/rz-super-portal/div/main/section/rz-dynamic-widgets/rz-widget-list[1]/section/ul/li[1]/rz-list-tile/div/a[2]";
 

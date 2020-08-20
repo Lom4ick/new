@@ -4,7 +4,7 @@ import com.rozetka.www.ui.pages.*;
 import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
-public class SimpleUiTest extends BaseUiTest{
+public class SimpleUiTest extends BaseUiTest {
     private HomePage homePage = new HomePage();
     private DeliveryPaymentPage deliveryPaymentPage = new DeliveryPaymentPage();
     private ComputersLaptopsPage computersLaptopsPage = new ComputersLaptopsPage();
@@ -25,12 +25,12 @@ public class SimpleUiTest extends BaseUiTest{
 
     @Feature("DeliveryPaymentCheck")
     @Test
-    public void checkDeliveryPayment(){
-            homePage
+    public void checkDeliveryPayment() {
+        homePage
                 .getHomePage()
                 .clickDeliveryPayment();
-            deliveryPaymentPage
-                    .verifyLinkNovaPoshta();
+        deliveryPaymentPage
+                .verifyLinkNovaPoshta();
     }
 
     @Feature("KidsConsoles Check")

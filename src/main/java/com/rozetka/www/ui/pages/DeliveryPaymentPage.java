@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import static com.rozetka.www.ui.DriverManager.getDriver;
 
-public class DeliveryPaymentPage extends HomePage{
+public class DeliveryPaymentPage {
     private static final String LINK_NOVA_POSHTA = "//span[contains(text(),'Курьер «Нова пошта»')]";
 
 
