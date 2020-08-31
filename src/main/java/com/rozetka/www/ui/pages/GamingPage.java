@@ -3,7 +3,7 @@ package com.rozetka.www.ui.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.rozetka.www.ui.DriverManager.getDriver;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class GamingPage {
 
@@ -11,7 +11,7 @@ public class GamingPage {
 
     @Step
     public GamingPage clickPsStore() {
-        getDriver().findElement(By.xpath(LINK_PSSTORE)).click();
+        $x(LINK_PSSTORE).click();
         return this;
     }
 }

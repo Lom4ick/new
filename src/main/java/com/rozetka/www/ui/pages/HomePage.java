@@ -1,11 +1,9 @@
 package com.rozetka.www.ui.pages;
 
-import com.rozetka.www.ui.ReadFileData;
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import static com.rozetka.www.ui.DriverManager.getDriver;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class HomePage {
     private static final String CABINET = "//a[@class='header-topline__user-link link-dashed']";
@@ -17,53 +15,55 @@ public class HomePage {
 
     private static final String LOGIN_ERROR_MESSAGE = "//p[@class='error-message error-message_type_tooltip error-message_type_text error-message_color_red']";
 
-    private ReadFileData data = new ReadFileData();
 
-    @Step
-    public HomePage getHomePage() {
-        getDriver().get(data.getHomePageUrl());
+    public HomePage authorize() {
+        clickCabinet();
+        setLogin("tester123tester@i.ua");
+        setPassword("Automation555");
+        clickEnterButton();
         return this;
     }
 
     @Step
     public HomePage clickCabinet() {
-        getDriver().findElement(By.xpath(CABINET)).click();
+        $x(CABINET).click();
         return this;
     }
 
     @Step
     public HomePage setLogin(String login) {
-        getDriver().findElement(By.xpath(LOGIN_INPUT)).sendKeys(login);
+       $x(LOGIN_INPUT).setValue(login);
         return this;
     }
 
     @Step
     public HomePage setPassword(String password) {
-        getDriver().findElement(By.xpath(PASSWORD_INPUT)).sendKeys(password);
+        $x(PASSWORD_INPUT).setValue(password);
         return this;
     }
 
     @Step
     public HomePage clickEnterButton() {
-        getDriver().findElement(By.xpath(ENTER_BUTTON)).click();
+        $x(ENTER_BUTTON).click();
         return this;
     }
 
 
     @Step
-    public WebElement verifyLoginErrorMessage() {
-        return getDriver().findElement(By.xpath(LOGIN_ERROR_MESSAGE));
+    public HomePage verifyLoginErrorMessage() {
+         $x(LOGIN_ERROR_MESSAGE).shouldBe(Condition.appears);
+        return this;
     }
 
     @Step
     public HomePage clickDeliveryPayment() {
-        getDriver().findElement(By.xpath(DELIVERY_PAYMENT)).click();
+        $x(DELIVERY_PAYMENT).shouldBe(Condition.appears);
         return this;
     }
 
     @Step
     public HomePage clickComputersLaptops() {
-        getDriver().findElement(By.xpath(COMPUTERS_LAPTOPS)).click();
+        $x(COMPUTERS_LAPTOPS).click();
         return this;
     }
 }

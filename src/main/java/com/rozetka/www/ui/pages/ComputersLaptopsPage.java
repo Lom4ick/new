@@ -3,7 +3,8 @@ package com.rozetka.www.ui.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.rozetka.www.ui.DriverManager.getDriver;
+import static com.codeborne.selenide.Selenide.$x;
+
 
 public class ComputersLaptopsPage {
 
@@ -11,7 +12,7 @@ public class ComputersLaptopsPage {
 
     @Step
     public ComputersLaptopsPage clickGaming() {
-        getDriver().findElement(By.xpath(LINK_GAMING)).click();
+        $x(LINK_GAMING).click();
         return this;
     }
 }
