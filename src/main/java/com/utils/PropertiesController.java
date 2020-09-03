@@ -1,4 +1,4 @@
-package com.rozetka.www.ui.utils;
+package com.utils;
 
 import lombok.SneakyThrows;
 import lombok.var;

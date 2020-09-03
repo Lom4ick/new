@@ -1,14 +1,11 @@
 package com.rozetka.www.ui;
 
 import com.codeborne.selenide.Configuration;
-import com.rozetka.www.ui.utils.PropertiesController;
-import com.rozetka.www.ui.utils.PropertiesNames;
-
-import lombok.var;
+import com.utils.PropertiesController;
 
 import java.util.Objects;
 
-import static com.rozetka.www.ui.utils.PropertiesNames.*;
+import static com.utils.PropertiesNames.*;
 
 
 public class DriverManager {

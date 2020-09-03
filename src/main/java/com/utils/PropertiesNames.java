@@ -1,4 +1,4 @@
-package com.rozetka.www.ui.utils;
+package com.utils;
 
 public class PropertiesNames {
     public static final String ENVIRONMENT = "env";
