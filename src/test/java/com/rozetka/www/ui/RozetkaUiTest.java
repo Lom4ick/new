@@ -32,11 +32,11 @@ public class RozetkaUiTest extends BaseUiTest {
         samsungMonitorPage
                 .buySamsungMonitor()
                 .addSamsungMonitor()
-                .verifyQuantity()
+                .verifyPrice(" 6 458")
                 .makeOrder();
         orderPage
-                .checkNovaPoshta()
-                .checkCardPayment()
+                .selectNovaPoshta()
+                .selectCardPayment()
                 .verifyCheckBoxes();
     }
 

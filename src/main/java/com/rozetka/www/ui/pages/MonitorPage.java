@@ -6,11 +6,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class MonitorPage {
 
-    private static final String SAMSUNG_MONITOR = "//img[@class='lazy_img_hover display-none']";
+    private static final String SAMSUNG_MONITOR = "//a[@class='goods-tile__picture']";
 
     @Step
     public MonitorPage clickSamsungMonitor() {
-        $x(SAMSUNG_MONITOR).hover();
         $x(SAMSUNG_MONITOR).click();
         return this;
     }

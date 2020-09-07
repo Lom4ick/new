@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class ComputersLaptopsPage {
 
     private static final String LINK_GAMING = "/html/body/app-root/div/div[1]/rz-super-portal/div/main/section/rz-dynamic-widgets/rz-widget-list[1]/section/ul/li[4]/rz-list-tile/div/a[2]";
-    private static final String MONITOR = "//span[@class='menu-toggler__text']";
+    private static final String MONITOR = "//div/a[contains(@href,'monitors')][.=' Мониторы ']";
 
     @Step
     public ComputersLaptopsPage clickGaming() {

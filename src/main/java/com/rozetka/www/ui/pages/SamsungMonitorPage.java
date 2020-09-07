@@ -4,12 +4,13 @@ package com.rozetka.www.ui.pages;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class SamsungMonitorPage {
-    private static final String BUY_BUTTON = "/html/body/app-root/div/div[1]/app-rz-product/div/product-tab-main/div[1]/div[1]/div[2]/product-main-info/div[1]/div/app-product-buy-btn/app-buy-button/button/span";
-    private static final String ADD_BUTTON = "/html/body/app-root/single-modal-window/div[2]/div[2]/rz-shopping-cart/div/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/button[2]";
-    private static final String QUANTITY = "//input[@class='cart-counter__input ng-pristine ng-valid ng-touched']";
+    private static final String BUY_BUTTON = "//button//span[.=' Купить ']";
+    private static final String ADD_BUTTON = "//button[@aria-label='Добавить ещё один товар']";
+    private static final String PRICE = "//p[@class='cart-product__price']";
     private static final String MAKE_ORDER = "//a[@class='button button_size_large button_color_green cart-receipt__submit']";
     private static final String DELETE_BUTTON = "//*[@id=\"shoppingCartActions\"]/li[1]/button";
     private static final String EMPTY_CART = "//h4[@class='cart-dummy__heading']";
@@ -28,8 +29,8 @@ public class SamsungMonitorPage {
     }
 
     @Step
-    public SamsungMonitorPage verifyQuantity() {
-        $x(QUANTITY).val("2");
+    public SamsungMonitorPage verifyPrice(String expectedQuantity) {
+        $x(PRICE).shouldHave(text(expectedQuantity));
         return this;
     }
 
