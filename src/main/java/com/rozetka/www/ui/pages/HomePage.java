@@ -11,9 +11,19 @@ public class HomePage {
     private static final String PASSWORD_INPUT = "//input[@id='auth_pass']";
     private static final String ENTER_BUTTON = "//button[@class='button button_size_large button_color_green auth-modal__submit']";
     private static final String DELIVERY_PAYMENT = "//li[@class='main-links__item']/a[@href='https://rozetka.com.ua/payments-and-deliveries/']";
-    private static final String COMPUTERS_LAPTOPS = "/html/body/app-root/div/div[1]/app-rz-header/header/div/div[2]/div[1]/fat-menu/div/ul/li[1]/a";
+    private static final String COMPUTERS_LAPTOPS = "//a[@href='https://rozetka.com.ua/computers-notebooks/c80253/']";
+    private static final String CATALOG = "//span[@class='menu-toggler__text']";
 
     private static final String LOGIN_ERROR_MESSAGE = "//p[@class='error-message error-message_type_tooltip error-message_type_text error-message_color_red']";
+
+    private static final String REGISTRATION_BUTTON = "//a[@class='auth-modal__register-link']";
+    private static final String SURNAME = "//input[@formcontrolname='surname']";
+    private static final String NAME = "//input[@formcontrolname='name']";
+    private static final String MAIL = "//input[@formcontrolname='username']";
+    private static final String PASSWORD = "//input[@formcontrolname='password']";
+    private static final String REGISTRATION_BUTTON2 = "//button[@class='button button_size_large button_color_green auth-modal__submit']";
+    private static final String MAIL_VALIDATION_MESSAGE = "//p[@class='validation-message']";
+
 
 
     public HomePage authorize() {
@@ -24,6 +34,68 @@ public class HomePage {
         return this;
     }
 
+    public HomePage registrationMailErrorCheck() {
+        clickCabinet();
+        clickRegistration();
+        inputSurname();
+        inputName();
+        inputMail();
+        inputPassword();
+        clickRegistrationButton();
+        verifyMailErrorMessage();
+        return this;
+    }
+
+    @Step
+    public HomePage clickCatalog() {
+        $x(CATALOG).click();
+        return this;
+    }
+
+    @Step
+    public HomePage clickRegistration() {
+        $x(REGISTRATION_BUTTON).click();
+        return this;
+    }
+
+    @Step
+    public HomePage inputSurname() {
+        $x(SURNAME).setValue("Агафян");
+        return this;
+
+    }
+
+    @Step
+    public HomePage inputName() {
+        $x(NAME).setValue("Артемон");
+        return this;
+    }
+
+    @Step
+    public HomePage inputMail() {
+        $x(MAIL).setValue("newerUseThisMail");
+        return this;
+    }
+
+    @Step
+    public HomePage inputPassword() {
+        $x(PASSWORD).setValue("TotallyWrongPass12345");
+        return this;
+    }
+
+    @Step
+    public HomePage clickRegistrationButton() {
+        $x(REGISTRATION_BUTTON2).click();
+        return this;
+    }
+
+    @Step
+    public HomePage verifyMailErrorMessage() {
+        $x(MAIL_VALIDATION_MESSAGE).shouldBe(Condition.appears);
+        return this;
+    }
+
+  // -----------------------------------------------------
     @Step
     public HomePage clickCabinet() {
         $x(CABINET).click();
