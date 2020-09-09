@@ -1,47 +1,51 @@
 package com.rozetka.www.ui;
 
+import com.rozetka.www.ui.elements.CartPopUp;
+import com.rozetka.www.ui.elements.CatalogPopUp;
 import com.rozetka.www.ui.elements.Header;
+import com.rozetka.www.ui.elements.RegistrationPopUp;
 import com.rozetka.www.ui.pages.*;
 import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
 public class RozetkaUiTest extends BaseUiTest {
 
-    private HomePage homePage = new HomePage();
-    private ComputersLaptopsPage computersLaptopsPage = new ComputersLaptopsPage();
-    private MonitorPage monitorPage = new MonitorPage();
-    private SamsungMonitorPage samsungMonitorPage = new SamsungMonitorPage();
-    private OrderPage orderPage = new OrderPage();
+    private CategoryPage categoryPage = new CategoryPage();
+    private ItemsPage itemsPage = new ItemsPage();
+    private ItemPage itemPage = new ItemPage();
+    private CheckoutPage checkoutPage = new CheckoutPage();
     private Header header = new Header();
-    private RegistrationPage registrationPage = new RegistrationPage();
-    private CartPage cartPage = new CartPage();
+    private CatalogPopUp catalogPopUp = new CatalogPopUp();
+    private RegistrationPopUp registrationPopUp = new RegistrationPopUp();
+    private CartPopUp cartPopUp = new CartPopUp();
 
     @Feature("Not Full Registration with Error")
     @Test
     public void registrationNotFull() {
         header
                 .clickCabinet();
-        registrationPage
+        registrationPopUp
                 .registrationMailErrorCheck();
     }
 
     @Feature("Monitor Order")
     @Test
     public void monitorOrder() {
-        homePage
-                .clickCatalog()
+        header
+                .clickCatalog();
+        catalogPopUp
                 .clickComputersLaptops();
-        computersLaptopsPage
-                .clickCategory();
-        monitorPage
-                .clickItem();
-        samsungMonitorPage
-                .buySamsungMonitor();
-        cartPage
-                .addSamsungMonitor()
+        categoryPage
+                .clickCategory("Мониторы");
+        itemsPage
+                .clickFirstItem();
+        itemPage
+                .buyItem();
+        cartPopUp
+                .addItem()
                 .verifyPrice(" 6 458")
                 .makeOrder();
-        orderPage
+        checkoutPage
                 .selectNovaPoshta()
                 .selectCardPayment()
                 .isNovaPoshtaSelected()
@@ -51,18 +55,19 @@ public class RozetkaUiTest extends BaseUiTest {
     @Feature("Cart Operations")
     @Test
     public void cartOperations() {
-        homePage
-                .clickCatalog()
+        header
+                .clickCatalog();
+        catalogPopUp
                 .clickComputersLaptops();
-        computersLaptopsPage
-                .clickCategory();
-        monitorPage
-                .clickItem();
-        samsungMonitorPage
-                .buySamsungMonitor();
-        cartPage
-                .addSamsungMonitor()
-                .deleteMonitor()
+        categoryPage
+                .clickCategory("Мониторы");
+        itemsPage
+                .clickFirstItem();
+        itemPage
+                .buyItem();
+        cartPopUp
+                .addItem()
+                .deleteItem()
                 .checkEmptyCart();
     }
 

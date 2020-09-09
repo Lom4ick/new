@@ -5,7 +5,7 @@ import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class OrderPage {
+public class CheckoutPage {
 
     private static final String NOVAPOSHTA_DELIVERY = "//span[contains(text(),' Самовывоз из Новой Почты ')]";
     private static final String NOVAPOSHTA_DELIVERY_CHECKBOX = "//span[contains(text(),' Самовывоз из Новой Почты ')]/../../../input[@type='radio']";
@@ -13,29 +13,26 @@ public class OrderPage {
     private static final String CARD_PAYMENT_CHECKBOX = "//span[contains(text(),' Картой онлайн ')]/../../../input[@type='radio']";
 
     @Step
-    public OrderPage selectNovaPoshta() {
+    public CheckoutPage selectNovaPoshta() {
         $x(NOVAPOSHTA_DELIVERY).click();
         return this;
     }
 
     @Step
-    public OrderPage selectCardPayment() {
+    public CheckoutPage selectCardPayment() {
         $x(CARD_PAYMENT).click();
         return this;
     }
 
     @Step
-    public OrderPage isNovaPoshtaSelected() {
+    public CheckoutPage isNovaPoshtaSelected() {
         Assert.assertTrue($x(NOVAPOSHTA_DELIVERY_CHECKBOX).isSelected(), "Expected DELIVERY checkbox was not selected\n");
         return this;
     }
 
     @Step
-    public OrderPage isCardPaymentSelected() {
+    public CheckoutPage isCardPaymentSelected() {
         Assert.assertTrue($x(CARD_PAYMENT_CHECKBOX).isSelected(), "Expected PAYMENT checkbox was not selected\n");
         return this;
     }
-
-
-
 }

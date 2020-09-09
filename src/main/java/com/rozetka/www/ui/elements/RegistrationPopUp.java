@@ -1,11 +1,11 @@
-package com.rozetka.www.ui.pages;
+package com.rozetka.www.ui.elements;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class RegistrationPage {
+public class RegistrationPopUp {
 
     private static final String REGISTRATION_BUTTON = "//a[@class='auth-modal__register-link']";
     private static final String SURNAME = "//input[@formcontrolname='surname']";
@@ -21,7 +21,7 @@ public class RegistrationPage {
     private static final String LOGIN_ERROR_MESSAGE = "//p[@class='error-message error-message_type_tooltip error-message_type_text error-message_color_red']";
 
     //--------------------------------------------------
-    public RegistrationPage registrationMailErrorCheck() {
+    public RegistrationPopUp registrationMailErrorCheck() {
         clickRegistration();
         inputSurname();
         inputName();
@@ -33,51 +33,51 @@ public class RegistrationPage {
     }
 
     @Step
-    public RegistrationPage clickRegistration() {
+    public RegistrationPopUp clickRegistration() {
         $x(REGISTRATION_BUTTON).click();
         return this;
     }
 
     @Step
-    public RegistrationPage inputSurname() {
+    public RegistrationPopUp inputSurname() {
         $x(SURNAME).setValue("Агафян");
         return this;
 
     }
 
     @Step
-    public RegistrationPage inputName() {
+    public RegistrationPopUp inputName() {
         $x(NAME).setValue("Артемон");
         return this;
     }
 
     @Step
-    public RegistrationPage inputMail() {
+    public RegistrationPopUp inputMail() {
         $x(MAIL).setValue("newerUseThisMail");
         return this;
     }
 
     @Step
-    public RegistrationPage inputPassword() {
+    public RegistrationPopUp inputPassword() {
         $x(PASSWORD).setValue("TotallyWrongPass12345");
         return this;
     }
 
     @Step
-    public RegistrationPage clickRegistrationButton() {
+    public RegistrationPopUp clickRegistrationButton() {
         $x(REGISTRATION_BUTTON2).click();
         return this;
     }
 
     @Step
-    public RegistrationPage verifyMailErrorMessage() {
+    public RegistrationPopUp verifyMailErrorMessage() {
         $x(MAIL_VALIDATION_MESSAGE).shouldBe(Condition.appears);
         return this;
     }
 
     //-------------------------------------------------
 
-    public RegistrationPage authorize() {
+    public RegistrationPopUp authorize() {
         setLogin("tester123tester@i.ua");
         setPassword("Automation555");
         clickEnterButton();
@@ -85,28 +85,27 @@ public class RegistrationPage {
     }
 
     @Step
-    public RegistrationPage setLogin(String login) {
+    public RegistrationPopUp setLogin(String login) {
         $x(LOGIN_INPUT).setValue(login);
         return this;
     }
 
     @Step
-    public RegistrationPage setPassword(String password) {
+    public RegistrationPopUp setPassword(String password) {
         $x(PASSWORD_INPUT).setValue(password);
         return this;
     }
 
     @Step
-    public RegistrationPage clickEnterButton() {
+    public RegistrationPopUp clickEnterButton() {
         $x(ENTER_BUTTON).click();
         return this;
     }
 
     @Step
-    public RegistrationPage verifyLoginErrorMessage() {
+    public RegistrationPopUp verifyLoginErrorMessage() {
         $x(LOGIN_ERROR_MESSAGE).shouldBe(Condition.appears);
         return this;
     }
-
 }
 
