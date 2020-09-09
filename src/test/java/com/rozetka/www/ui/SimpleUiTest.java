@@ -1,5 +1,6 @@
 package com.rozetka.www.ui;
 
+import com.rozetka.www.ui.elements.Header;
 import com.rozetka.www.ui.pages.*;
 import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
@@ -10,11 +11,15 @@ public class SimpleUiTest extends BaseUiTest {
     private ComputersLaptopsPage computersLaptopsPage = new ComputersLaptopsPage();
     private GamingPage gamingPage = new GamingPage();
     private PsStore psStore = new PsStore();
+    private Header header = new Header();
+    private RegistrationPage registrationPage = new RegistrationPage();
 
     @Feature("authorization")
     @Test
     public void authorizationWrongLogin() {
-        homePage
+        header
+                .clickCabinet();
+        registrationPage
                 .authorize()
                 .verifyLoginErrorMessage();
     }

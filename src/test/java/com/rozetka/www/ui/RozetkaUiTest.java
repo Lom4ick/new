@@ -1,5 +1,6 @@
 package com.rozetka.www.ui;
 
+import com.rozetka.www.ui.elements.Header;
 import com.rozetka.www.ui.pages.*;
 import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
@@ -11,11 +12,16 @@ public class RozetkaUiTest extends BaseUiTest {
     private MonitorPage monitorPage = new MonitorPage();
     private SamsungMonitorPage samsungMonitorPage = new SamsungMonitorPage();
     private OrderPage orderPage = new OrderPage();
+    private Header header = new Header();
+    private RegistrationPage registrationPage = new RegistrationPage();
+    private CartPage cartPage = new CartPage();
 
     @Feature("Not Full Registration with Error")
     @Test
     public void registrationNotFull() {
-        homePage
+        header
+                .clickCabinet();
+        registrationPage
                 .registrationMailErrorCheck();
     }
 
@@ -26,18 +32,20 @@ public class RozetkaUiTest extends BaseUiTest {
                 .clickCatalog()
                 .clickComputersLaptops();
         computersLaptopsPage
-                .clickMonitor();
+                .clickCategory();
         monitorPage
-                .clickSamsungMonitor();
+                .clickItem();
         samsungMonitorPage
-                .buySamsungMonitor()
+                .buySamsungMonitor();
+        cartPage
                 .addSamsungMonitor()
                 .verifyPrice(" 6 458")
                 .makeOrder();
         orderPage
                 .selectNovaPoshta()
                 .selectCardPayment()
-                .verifyCheckBoxes();
+                .isNovaPoshtaSelected()
+                .isCardPaymentSelected();
     }
 
     @Feature("Cart Operations")
@@ -47,11 +55,12 @@ public class RozetkaUiTest extends BaseUiTest {
                 .clickCatalog()
                 .clickComputersLaptops();
         computersLaptopsPage
-                .clickMonitor();
+                .clickCategory();
         monitorPage
-                .clickSamsungMonitor();
+                .clickItem();
         samsungMonitorPage
-                .buySamsungMonitor()
+                .buySamsungMonitor();
+        cartPage
                 .addSamsungMonitor()
                 .deleteMonitor()
                 .checkEmptyCart();

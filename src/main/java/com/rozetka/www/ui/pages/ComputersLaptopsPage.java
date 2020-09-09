@@ -17,7 +17,7 @@ public class ComputersLaptopsPage {
     }
 
     @Step
-    public ComputersLaptopsPage clickMonitor() {
+    public ComputersLaptopsPage clickCategory() {
         $x(MONITOR).click();
         return this;
     }
