@@ -17,8 +17,8 @@ public class RegistrationPopUp {
 
     private static final String LOGIN_INPUT = "//input[@id='auth_email']";
     private static final String PASSWORD_INPUT = "//input[@id='auth_pass']";
-    private static final String ENTER_BUTTON = "//button[@class='button button_size_large button_color_green auth-modal__submit']";
-    private static final String LOGIN_ERROR_MESSAGE = "//p[@class='error-message error-message_type_tooltip error-message_type_text error-message_color_red']";
+    private static final String ENTER_BUTTON = "//button[@class='button button--large button--green auth-modal__submit']";
+    private static final String LOGIN_ERROR_MESSAGE = "//strong[@class='auth-modal__form-email']";
 
     //--------------------------------------------------
     public RegistrationPopUp registrationMailErrorCheck() {
@@ -78,7 +78,7 @@ public class RegistrationPopUp {
     //-------------------------------------------------
 
     public RegistrationPopUp authorize() {
-        setLogin("tester123tester@i.ua");
+        setLogin("ertrsdfgsasdf@sdfgd.com");
         setPassword("Automation555");
         clickEnterButton();
         return this;
